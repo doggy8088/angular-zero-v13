@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-article-body',
@@ -8,10 +8,10 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 export class ArticleBodyComponent implements OnInit, OnChanges {
 
   @Input()
-  item;
+  item: any;
 
   @Input()
-  counter;
+  counter: any;
 
   constructor() {
     console.log('ArticleBodyComponent: constructor');
@@ -21,7 +21,7 @@ export class ArticleBodyComponent implements OnInit, OnChanges {
     console.log('ArticleBodyComponent '+this.item.id+': ngOnInit');
   }
 
-  ngOnChanges(changes) {
+  ngOnChanges(changes: SimpleChanges) {
     console.log('ArticleBodyComponent'+this.item.id+': ngOnChanges');
     console.log(changes);
   }

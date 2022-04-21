@@ -14,7 +14,7 @@ export class DataService {
     console.log('DataService');
   }
 
-  doDelete(item) {
+  doDelete(item: any) {
     return this.http.delete('http://localhost:4200/api/articles/'+item.id);
   }
 

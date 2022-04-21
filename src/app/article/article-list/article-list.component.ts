@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class ArticleListComponent implements OnInit {
 
   counter = 0;
-  data$: Observable<any>;
+  data$!: Observable<any>;
 
   constructor(public datasvc: DataService) {
   }

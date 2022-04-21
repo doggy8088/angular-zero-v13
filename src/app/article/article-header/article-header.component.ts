@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-article-header',
@@ -8,9 +8,9 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges } 
 export class ArticleHeaderComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input()
-  item;
+  item: any;
 
-  orig_item;
+  orig_item: any;
 
   @Output()
   delete = new EventEmitter<any>();
@@ -26,17 +26,17 @@ export class ArticleHeaderComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges(changes) {
-    if (changes.item) {
-      this.orig_item = changes.item.currentValue;
-      this.item = Object.assign({}, changes.item.currentValue);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['item']) {
+      this.orig_item = changes['item'].currentValue;
+      this['item'] = Object.assign({}, changes['item'].currentValue);
     }
   }
 
   ngOnDestroy() {
   }
 
-  doEdit(title) {
+  doEdit(title: string) {
     this.titleChanged.emit(this.item);
   }
 
